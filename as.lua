@@ -2642,7 +2642,7 @@ end
 -- ==================== ORION LIB - SCRIPT COMPLETO ====================
 -- Carregar a biblioteca OrionLib
 -- Tenta carregar a OrionLib com fallback
-local OrionLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/shlexware/Orion/main/source"))()
+local OrionLib = loadstring(game:HttpGet('https://raw.githubusercontent.com/jensonhirst/Orion/main/source'))()
 if not OrionLib then
     OrionLib = loadstring(game:HttpGet("https://raw.kkgithub.com/shlexware/Orion/main/source"))()
 end
