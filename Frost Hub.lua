@@ -1453,15 +1453,15 @@ local Tabs = {
   Main = Window:AddTab({Title = "Farm", Icon = "home"}),
   Melee = Window:AddTab({Title = "Fighting Style", Icon = "sword"}),
   Quests = Window:AddTab({Title = "Items Farm", Icon = "book"}),
-  SeaEvent = Window:AddTab({Title = "Sea Events", Icon = "wave"}),
+  SeaEvent = Window:AddTab({Title = "Sea Events", Icon = "anchor"}),
   Mirage = Window:AddTab({Title = "Mirage + RaceV4", Icon = "map"}),
-  Drago = Window:AddTab({Title = "Drago Dojo", Icon = "dragon"}),
-  Prehistoric = Window:AddTab({Title = "Prehistoric", Icon = "fossil"}),
+  Drago = Window:AddTab({Title = "Drago Dojo", Icon = "martial-arts"}),
+  Prehistoric = Window:AddTab({Title = "Prehistoric", Icon = "bone"}), 
   Raids = Window:AddTab({Title = "Raid", Icon = "skull"}),
   Combat = Window:AddTab({Title = "Combat PVP", Icon = "target"}),
   Travel = Window:AddTab({Title = "Travel", Icon = "plane"}),
   Fruit = Window:AddTab({Title = "Fruits", Icon = "apple"}),
-  Shop = Window:AddTab({Title = "Shop", Icon = "store"}),
+  Shop = Window:AddTab({Title = "Shop", Icon = "shopping-cart"}), 
   Misc = Window:AddTab({Title = "Misc", Icon = "puzzle"})
 }
  
