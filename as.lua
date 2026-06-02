@@ -3223,17 +3223,16 @@ end
 v2:AddDropdown({
     Name = "Select Farm Mode",
     Options = {"Level", "Bone", "Cake Prince", "Tyrant Of The Skies"},
-    Default = GetSetting("SelectedFarmMode_Save", "Level"),
+    Default = false
     Callback = function(v)
         _G.SelectedFarmMode = v
         _G.SaveData["SelectedFarmMode_Save"] = v
-        SaveSettings()
     end
 })
 
 v2:AddToggle({
     Name = "Start Farm",
-    Default = GetSetting("StartFarm_Save", false),
+    Default = false
     Callback = function(v)
         _G.StartFarm = v
 
@@ -3262,11 +3261,10 @@ v2:AddToggle({
 
 v2:AddToggle({
     Name = "Accept Quests",
-    Default = GetSetting("AcceptQuest_Save", false),
+    Default = false
     Callback = function(v)
         _G.AcceptQuest = v
         _G.SaveData["AcceptQuest_Save"] = v
-        SaveSettings()
     end
 })
 
@@ -7686,11 +7684,10 @@ v7:AddButton({
 _G.AutoCraftVolcanic = _G.AutoCraftVolcanic or false
 v7:AddToggle({
     Name = "Auto Craft Volcanic Magnet",
-    Default = GetSetting("AutoCraftVolcanic_Save", false),
+    Default = false
     Callback = function(Value)
         _G.AutoCraftVolcanic = Value
         _G.SaveData["AutoCraftVolcanic_Save"] = Value
-        SaveSettings()
     end
 })
 
