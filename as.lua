@@ -2642,28 +2642,28 @@ end
 -- ==================== ORION LIB - SCRIPT COMPLETO ====================
 -- Carregar a biblioteca OrionLib
 -- Tenta carregar a OrionLib com fallback
-local OrionLib = loadstring(game:HttpGet('https://raw.githubusercontent.com/jensonhirst/Orion/main/source'))()
+local OrionLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/jensonhirst/Orion/main/source"))()
 if not OrionLib then
-    OrionLib = loadstring(game:HttpGet("https://raw.kkgithub.com/shlexware/Orion/main/source"))()
-end
-if not OrionLib then
-    game:GetService("StarterGui"):SetCore("SendNotification", {
-        Title = "Erro Crítico",
-        Text = "Falha ao carregar a biblioteca OrionLib. Verifique sua conexão.",
-        Duration = 5
-    })
+    -- notificação de erro
     return
 end
 
--- Criar janela (sem salvamento)
 local Window = OrionLib:MakeWindow({
-    Name = "Frost Hub | Blox Fruits",
+    Name = "Frost Hub | Farm",
     HidePremium = false,
     SaveConfig = false,
     ConfigFolder = "FrostHub",
     IntroEnabled = false
 })
 
+if not Window then
+    -- notificação de erro
+    return
+end
+
+-- Agora sim, criar as abas
+local v1 = Window:MakeTab({ Name = "Status/Server", Icon = "rbxassetid://7040410130" })
+-- etc.
 -- Agora crie as abas normalmente...
 
 -- Criar as abas (mesmos títulos e ícones)
