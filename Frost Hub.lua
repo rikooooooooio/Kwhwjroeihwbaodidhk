@@ -637,20 +637,20 @@ QuestCheck = function()
     if World1 then
         if I == 1 or I <= 9 then
             if tostring(TeamSelf) == "Marines" then
-                Mon = "Trainee"
-                Qname = "MarineQuest"
-                Qdata = 1
-                NameMon = "Trainee"
-                PosM = CFrame.new(-2709.67944, 24.5206585, 2104.24585)
-                PosQ = CFrame.new(-2709.67944, 24.5206585, 2104.24585)
-            elseif tostring(TeamSelf) == "Pirates" then
-                Mon = "Bandit"
-                Qdata = 1
-                Qname = "BanditQuest1"
-                NameMon = "Bandit"
-                PosM = CFrame.new(1045.9626464844, 27.002508163452, 1560.8203125)
-                PosQ = CFrame.new(1045.9626464844, 27.002508163452, 1560.8203125)
-            end
+    Mon = "Trainee"
+    Qname = "MarineQuest"
+    Qdata = 1
+    NameMon = "Trainee"
+    PosQ = CFrame.new(-2709.67944, 24.5206585, 2104.24585)   -- NPC da quest
+    PosM = CFrame.new(-2709.67944, 24.5206585, 2104.24585)   -- área dos monstros (se for diferente, ajuste)
+elseif tostring(TeamSelf) == "Pirates" then
+    Mon = "Bandit"
+    Qdata = 1
+    Qname = "BanditQuest1"
+    NameMon = "Bandit"
+    PosQ = CFrame.new(1045.9626464844, 27.002508163452, 1560.8203125)  -- NPC
+    PosM = CFrame.new(1045.9626464844, 27.002508163452, 1560.8203125)  -- monstros
+			end
         elseif I >= 10 and I <= 14 then
             Mon = "Monkey"
             Qdata = 1
@@ -1367,9 +1367,9 @@ QuestNeta = function()
   return {
     [1] = Mon,
     [2] = Qdata,
-    [3] = Qname,
-    [4] = PosM,
-    [5] = NameMon,
+    [3] = Qname, 
+	[5] = NameMon,
+	[4] = PosM,
     [6] = PosQ
   }
 end
