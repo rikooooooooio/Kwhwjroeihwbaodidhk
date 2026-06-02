@@ -7,7 +7,6 @@ if makefolder and not isfolder(FolderName) then
     makefolder(FolderName) 
 end
 
-_G.SaveData = _G.SaveData or {}
 
 -- ========================================
 -- AUTO KEN (Observation Haki)
@@ -3226,7 +3225,6 @@ v2:AddDropdown({
     Default = false
     Callback = function(v)
         _G.SelectedFarmMode = v
-        _G.SaveData["SelectedFarmMode_Save"] = v
     end
 })
 
@@ -3252,10 +3250,8 @@ v2:AddToggle({
             elseif _G.SelectedFarmMode == "Tyrant Of The Skies" then  
                 _G.AutoTyrant = true -- Ativa a lógica do Tyrant
             end  
-        end
-
-        _G.SaveData["StartFarm_Save"] = v
-        SaveSettings()
+			end
+			
     end
 })
 
@@ -3264,7 +3260,6 @@ v2:AddToggle({
     Default = false
     Callback = function(v)
         _G.AcceptQuest = v
-        _G.SaveData["AcceptQuest_Save"] = v
     end
 })
 
@@ -7217,9 +7212,6 @@ _G.PrehistoricSkills = _G.PrehistoricSkills or {
     Gun = {Z = true, X = true}
 }
 
-if _G.SaveData and _G.SaveData.PrehistoricSkills then
-    _G.PrehistoricSkills = _G.SaveData.PrehistoricSkills
-end
 
 -- Hàm sử dụng skill Prehistoric
 local function UsePrehistoricSkills()
@@ -7687,7 +7679,6 @@ v7:AddToggle({
     Default = false
     Callback = function(Value)
         _G.AutoCraftVolcanic = Value
-        _G.SaveData["AutoCraftVolcanic_Save"] = Value
     end
 })
 
