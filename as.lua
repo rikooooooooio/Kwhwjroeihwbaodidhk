@@ -2614,12 +2614,11 @@ end
 -- ==================== ORION LIB - SCRIPT COMPLETO ====================
 -- Carregar a biblioteca OrionLib
 -- Tenta carregar a OrionLib com fallback
-local OrionLib = nil
-local urls = {
-    "https://raw.githubusercontent.com/jensonhirst/Orion/main/source",
-    "https://raw.kkgithub.com/jensonhirst/Orion/main/source",  -- proxy alternativo
-    "https://raw.githubusercontent.com/shlexware/Orion/main/source"  -- fork alternativo
-}
+-- ==================== SCRIPT MÍNIMO DE TESTE ====================
+print("Iniciando script...")
+
+-- Carregar OrionLib com fallback
+local OrionLib = "https://raw.githubusercontent.com/jensonhirst/Orion/main/source",
 
 for _, url in ipairs(urls) do
     local success, result = pcall(function()
@@ -2627,6 +2626,7 @@ for _, url in ipairs(urls) do
     end)
     if success and result then
         OrionLib = result
+        print("OrionLib carregada de: " .. url)
         break
     end
 end
@@ -2634,24 +2634,37 @@ end
 if not OrionLib then
     game:GetService("StarterGui"):SetCore("SendNotification", {
         Title = "Erro",
-        Text = "Falha ao carregar OrionLib. Verifique sua internet/executor.",
+        Text = "Falha ao carregar OrionLib",
         Duration = 5
     })
     return
 end
 
+-- Criar janela
 local Window = OrionLib:MakeWindow({
-    Name = "Frost Hub | Farm",
+    Name = "Teste - Frost Hub",
     HidePremium = false,
     SaveConfig = false,
-    ConfigFolder = "FrostHub",
     IntroEnabled = false
 })
 
-if not Window then
-    -- notificação de erro
-    return
-end
+-- Criar uma aba
+local TestTab = Window:MakeTab({ Name = "Teste", Icon = "rbxassetid://7040410130" })
+
+-- Adicionar um botão
+TestTab:AddButton({
+    Name = "Clique aqui",
+    Callback = function()
+        print("Botão funcionou!")
+        game:GetService("StarterGui"):SetCore("SendNotification", {
+            Title = "Sucesso",
+            Text = "OrionLib funcionando!",
+            Duration = 3
+        })
+    end
+})
+
+print("Script carregado com sucesso!")
 
 -- Agora sim, criar as abas
 local v1 = Window:MakeTab({ Name = "Status/Server", Icon = "rbxassetid://7040410130" })
