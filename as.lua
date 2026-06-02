@@ -5162,11 +5162,12 @@ task.spawn(function()
                         equippedTool = rodInBag
                     else
                         -- Sử dụng thông báo của bearlib
-                        bearlib:Notify({
-                            Name = "Auto Fish",
-                            Message = "please equip: " .. tostring(_G.SelectedRod),
-                            Duration = 3
-                        })
+                      game:GetService("StarterGui"):SetCore("SendNotification", {
+                          Title = "Auto Fish",
+                          Text = "Please Equipe: " .. tostring(_G.SelectedRod), 
+                          Duration = 3
+                      })
+                            
                         return -- Para a execução aqui para não dar erro tentando pescar sem vara
                     end
                 end
@@ -5197,9 +5198,9 @@ task.spawn(function()
                         FishingRequest:InvokeServer("Catch", 1)
                         
                         -- Sử dụng thông báo của bearlib khi câu được cá
-                        bearlib:Notify({
-                            Name = "Auto Fish",
-                            Message = "New item caught",
+                        game:GetService("StarterGui"):SetCore("SendNotification", {
+                            Title = "Auto Fish",
+                            Text = "New Item Caught",
                             Duration = 3
                         })
                     end
@@ -9350,10 +9351,10 @@ task.spawn(function()
                 local inStock, price = CheckSpecificFruit(_G.CheckFruit)
                 if inStock then
                     FruitCheckResult:SetValue("✅ " .. _G.CheckFruit .. " is in stock!\nPrice: $" .. formatNumber(price))
-                    bearlib:Notify({
-                        Name = "Fruit Stock Alert!",
-                        Message = _G.CheckFruit .. " is now in stock!\nPrice: $" .. formatNumber(price),
-                        Duration = 10
+                    game:GetService("StarterGui"):SetCore("SendNotification", {
+                        Title = "Título",
+                        Text = "Mensagem",
+                        Duration = 3
                     })
                 end
             end)
@@ -11182,10 +11183,10 @@ v14:AddToggle({
                         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(data.Key)
                         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem", data.Key)
                         
-                        bearlib:Notify({
-                            Name = "Frost Hub",
-                            Message = "SelectedMelee: " .. SelectedMelee,
-                            Duration = 2
+                        game:GetService("StarterGui"):SetCore("SendNotification", {
+                            Title = "Frost Hub",
+                            Text = "Error: Could not find the coordinates for this Melee in the current Sea!",
+                            Duration = 3
                         })
                         task.wait(1)
                     end
