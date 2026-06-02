@@ -1,3 +1,13 @@
+-- Definição do Services (logo no início do script)
+local Services = setmetatable({}, {
+    __index = function(self, serviceName)
+        local service = game:GetService(serviceName)
+        rawset(self, serviceName, service)
+        return service
+    end
+})
+
+
 local HttpService = Services.HttpService
 local FolderName = "Frost Hub | Farm"
 local FileName = "Settings.json"
