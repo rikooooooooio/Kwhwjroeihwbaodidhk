@@ -9,34 +9,6 @@ end
 
 _G.SaveData = _G.SaveData or {}
 
-function SaveSettings()
-    if not writefile then return false end
-    local success = pcall(function()
-        local json = HttpService:JSONEncode(_G.SaveData)
-        writefile(FullPath, json)
-    end)
-    return success
-end
-
-function LoadSettings()
-    if not (isfile and isfile(FullPath)) then return false end
-    local success, result = pcall(function()
-        local content = readfile(FullPath)
-        return HttpService:JSONDecode(content)
-    end)
-    if success and result then 
-        _G.SaveData = result
-        return true
-    end
-    return false
-end
-
-function GetSetting(name, default)
-    return _G.SaveData[name] ~= nil and _G.SaveData[name] or default
-end
-
-LoadSettings()
-
 -- ========================================
 -- AUTO KEN (Observation Haki)
 -- ========================================
@@ -3192,7 +3164,7 @@ task.spawn(function()
     end
 end)
 
-v2:Addn({"Auto Farm main"})
+v2:AddSection({"Auto Farm main"})
 v2:AddDropdown({
     Name = "Select Weapon",
     Options = {"Melee","Sword","Blox Fruit","Gun"},
