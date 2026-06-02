@@ -2633,9 +2633,29 @@ end
 -- ==================== ORION LIB - SCRIPT COMPLETO ====================
 -- Carregar a biblioteca OrionLib
 -- Tenta carregar a OrionLib com fallback
-local OrionLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/jensonhirst/Orion/main/source"))()
+local OrionLib = nil
+local urls = {
+    "https://raw.githubusercontent.com/jensonhirst/Orion/main/source",
+    "https://raw.kkgithub.com/jensonhirst/Orion/main/source",  -- proxy alternativo
+    "https://raw.githubusercontent.com/shlexware/Orion/main/source"  -- fork alternativo
+}
+
+for _, url in ipairs(urls) do
+    local success, result = pcall(function()
+        return loadstring(game:HttpGet(url))()
+    end)
+    if success and result then
+        OrionLib = result
+        break
+    end
+end
+
 if not OrionLib then
-    -- notificação de erro
+    game:GetService("StarterGui"):SetCore("SendNotification", {
+        Title = "Erro",
+        Text = "Falha ao carregar OrionLib. Verifique sua internet/executor.",
+        Duration = 5
+    })
     return
 end
 
